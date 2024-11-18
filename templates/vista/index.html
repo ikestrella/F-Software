@@ -1,0 +1,119 @@
+{% include 'header.html' %}
+
+    
+    <!-- artista Section -->
+    <header id= "artista" class="artista">
+        <h1>Mariana Cárdenas</h1>
+    </header>
+
+    <!-- Contact Sidebar -->
+    <aside class="contact-sidebar">
+        <div class="contact-card">
+            <h3>Redes</h3>
+            <p>Instagram: @mariana_cardenas_art</p>
+            <h3>Número Contacto</h3>
+            <p>+593 987 654 321</p>
+            <h3>Correo</h3>
+            <p>mariana.cardenas@artista.com</p>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="about-content">
+                <h2>Acerca</h2>
+                <p>Mariana Cárdenas es una destacada escultora contemporánea nacida el 23 de junio de 1990 en Guayaquil, Ecuador. Con una formación sólida en Bellas Artes, obtenida en la Universidad de las Artes de Guayaquil y complementada con cursos especializados en la Escuela de Arte de París, Mariana ha desarrollado un estilo único que mezcla elementos del surrealismo con la escultura contemporánea.</p>
+            </div>
+        </section>
+
+        <!-- Obras Section -->
+        <section id="obras" class="section">
+            <h2>Obras y Proyectos</h2>
+            
+            
+
+            <table class="table table-light">
+                <thead class="thead-light">
+                    <th>#</th>
+                    <th>Foto</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Acciones</th>
+                </thead>
+                <tbody>
+                    {% for obra in obras %}
+                    <tr>
+                        <td>{{obra[0]}}</td>
+                        <td>
+                            <img class="img-thumbnail" width="100" src="imagenes/{{obra[3]}}" alt="">
+                            
+                        </td>
+                        <td>{{obra[1]}}</td>
+                        <td>{{obra[2]}}</td>
+                        <td><a class="btn btn-warning" href="/edit/{{obra[0]}}">Editar</a> 
+                            <a onclick="return confirm('Desea Borrar la Obra?')" class="btn btn-danger" href="/destroy/{{obra[0]}}">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+
+            <br/>
+            <a href="{{url_for('create')}}" class="btn btn-success">
+
+                Ingresar nueva Obra
+
+            </a>
+            <br>
+            <br>
+
+        <!-- Productos Section -->
+        <section id="productos" class="section">
+            <h2>Productos</h2>
+            
+            <table class="table table-light">
+                <thead class="thead-light">
+                    <th>#</th>
+                    <th>Foto</th>
+                    <th>Nombre</th>
+                    <th>precio</th>
+                    <th>Acciones</th>
+                </thead>
+                <tbody>
+                    {% for producto in productos %}
+                    <tr>
+                        <td>{{producto[0]}}</td>
+                        <td>
+                            <img class="img-thumbnail" width="100" src="imagenes/{{producto[3]}}" alt="">
+                            
+                        </td>
+                        <td>{{producto[1]}}</td>
+                        <td>{{producto[2]}}</td>
+                        <td><a class="btn btn-warning" href="/editP/{{producto[0]}}">Editar</a> 
+                            <a onclick="return confirm('Desea Borrar el Producto?')" class="btn btn-danger" href="/destroyP/{{producto[0]}}">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+
+            <br/>
+            <a href="{{url_for('createP')}}" class="btn btn-success">
+
+                Ingresar nuevo Producto
+
+            </a>
+            <br>
+            <br>
+
+
+        </section>
+
+        </div>
+    </main>
+
+{% include 'footer.html' %}

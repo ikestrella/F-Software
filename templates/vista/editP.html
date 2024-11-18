@@ -1,0 +1,51 @@
+{% include 'header.html' %}
+{% for producto in productos %}
+Formulario para Editar
+
+
+<form method="post" action="/updateP" enctype="multipart/form-data">
+
+
+    <div class="card">
+        <div class="card-header">
+            Editar Producto
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Info</h5>
+            <p class="card-text">
+                <input type="hidden" value="{{producto[0]}}" name="txtID" id="txtID">
+                
+                <div class="form-group">
+                    <label for="txtnombre">Nombre</label>
+                    <input id="txtnombre" value="{{producto[1]}}" class="form-control" type="text" name="txtnombre">
+                </div>
+
+                <div class="form-group">
+                    <label for="txtprecio">Precio</label>
+                    <input id="txtprecio" value="{{producto[2]}}" class="form-control" type="text" name="txtprecio">
+                </div>
+
+                <div class="form-group">
+                    <label for="txtfoto">Foto</label>
+
+                    <img class="img-thumbnail" width="100" src="{{ url_for('imagenes', nombreFoto=producto[3] )}}" alt="">
+
+                    <input id="txtfoto" class="form-control" type="file" name="txtfoto">
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-success" value="Aceptar">
+                    <a href="{{url_for('index')}}" class="btn btn-primary">Regresar</a>
+                </div>
+                
+
+            </p>
+        </div>
+    </div>
+
+
+    
+</form>
+
+{% endfor %}
+{% include 'footer.html' %}
