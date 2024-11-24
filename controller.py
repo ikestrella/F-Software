@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, send_from_directory
-from models import *
-import os
+from model.obra import *
+from model.producto import *
+import os   
+from model.db import init_app
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder='views')
 app.secret_key = "Develoteca"
 
 CARPETA = os.path.join('imagenes')
